@@ -25,6 +25,15 @@ class Character {
         self.films = ""
     }
     
+    init(name: String) {
+        self.name = name
+        self.height = ""
+        self.mass = ""
+        self.birthYear = ""
+        self.homeworld = ""
+        self.films = ""
+    }
+    
     init(name: String, height: String, mass:String, birthYear: String, homeworld: String, films:String) {
         self.name = name
         self.height = height

@@ -10,7 +10,7 @@ import Foundation
 
 // API
 let rootURL = "https://swapi.co/api"
-let peopleURL = "/people"
+
 let planetsURL = "/planets"
 let filmsURL = "/films"
 
