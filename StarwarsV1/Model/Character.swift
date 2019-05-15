@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class Character {
     var name: String?
@@ -14,7 +15,7 @@ class Character {
     var mass: String?
     var birthYear:String?
     var homeworld: String?
-    var films: String?
+    var films: [String]?
     
     init() {
         self.name = "Loading.."
@@ -22,7 +23,7 @@ class Character {
         self.mass = ""
         self.birthYear = ""
         self.homeworld = ""
-        self.films = ""
+        self.films = []
     }
     
     init(name: String) {
@@ -31,10 +32,10 @@ class Character {
         self.mass = ""
         self.birthYear = ""
         self.homeworld = ""
-        self.films = ""
+        self.films = []
     }
     
-    init(name: String, height: String, mass:String, birthYear: String, homeworld: String, films:String) {
+    init(name: String, height: String, mass:String, birthYear: String, homeworld: String, films:[String]) {
         self.name = name
         self.height = height
         self.mass = mass
@@ -42,4 +43,12 @@ class Character {
         self.homeworld = homeworld
         self.films = films
     }
+    
+//    func LoadFilms() -> String {
+//        if let films = self.films {
+//            for film in 0..<films.count {
+//                Alamofire.request()
+//            }
+//        }
+//    }
 }

@@ -31,9 +31,19 @@ class DataService {
                     if let results = json["results"] as? [Dictionary<String, Any>] {
                         let resultCount = results.count
                         for char in 0..<resultCount {
-                            let character = Character()
+                            var character = Character()
                             if let name = results[char]["name"] as? String {
-                                character.name = name
+                                if let height = results[char]["height"] as? String {
+                                    if let mass = results[char]["mass"] as? String {
+                                        if let birthYear = results[char]["birth_year"] as? String {
+                                            if let homeWorld = results[char]["homeworld"] as? String {
+                                                if let films = results[char]["films"] as? [String] {
+                                                    character = Character(name: name, height: height, mass: mass, birthYear: birthYear, homeworld: homeWorld, films: films)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                             self.characters.append(character)
                         }
