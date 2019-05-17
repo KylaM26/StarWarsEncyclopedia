@@ -22,12 +22,14 @@ class CharacterTVC: UITableViewController, CharacterTableDelegate {
         DataService.instance.LoadCharactersFromAPI()
         CreateSearchbar()
         StyleTableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: characterCellIndetifer)
+        
+        //navigationController?.navigationBar.barTintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        navigationController?.navigationBar.barStyle = .blackTranslucent
     }
     
     func GetCharacters() {
         tableView.reloadData()
-        print(DataService.instance.characters.count)
+       // print(DataService.instance.characters.count)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,8 +44,8 @@ class CharacterTVC: UITableViewController, CharacterTableDelegate {
             cell.textLabel?.textColor = UIColor.white
             cell.textLabel?.textAlignment = NSTextAlignment.center
             
-            let color = UIColor(red: 0.9, green: 0.7, blue: CGFloat(0.1 * (Double(indexPath.row) * 0.08)), alpha: 1.0)
-            cell.backgroundColor = color
+      //      let color = UIColor(red: 0.9, green: 0.7, blue: CGFloat(0.25 * (Double(indexPath.row) * 0.08)), alpha: 1.0)
+            cell.backgroundColor = UIColor.clear
             cell.selectionStyle = .none
 
             return cell
@@ -69,8 +71,17 @@ class CharacterTVC: UITableViewController, CharacterTableDelegate {
     func StyleTableView() {
         tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = .singleLine
-        tableView.separatorColor = UIColor.white
+        tableView.separatorColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.8)
+        
+        let background = UIImageView(image: UIImage(named: LoadBG()))
+        background.contentMode = .scaleToFill
+        
+        tableView.backgroundView = background
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: characterCellIndetifer)
     }
     
-
+    func LoadBG() -> String {
+        let randomIndex = Int.random(in: 1...2)
+        return "Background\(randomIndex)"
+    }
 }
